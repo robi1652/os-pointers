@@ -78,7 +78,19 @@ int promptInt(std::string message, int min, int max)
         int i;
         i = 0;
         bool flag = false;
+        bool decimal = false;
         while(inputVal[i] != '\0') {
+            if (inputVal[i] == 46) {
+                if(decimal == true) {
+                    std::cout << "sorry, I cannot understand your answer" << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore();
+                    decimal = true;
+                    flag = true;
+                    break;
+                }
+                decimal = true;
+            }
             if (inputVal[i] < 48 || inputVal[i] > 57) {
                 std::cout << "Sorry, I cannot understand your answer" << std::endl;
                 std::cin.clear();
